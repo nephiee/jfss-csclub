@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Navbar from "./Navbar";
 import toast, {Toaster} from "react-hot-toast";
@@ -18,16 +18,17 @@ export default function Home() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ studentNumber, code }),
     });
-
-    let result = await res.json()
-    if (result.success) {
+    const data = await res.json();
+    if (data.success) {
+      toast.success(data.message);
       setStudentNumber("");
       setCode("");
-      toast.success(result.message);
-    } else toast.error(result.message);
+    } else {
+      toast.error(data.message || "An error occurred");
+    }
 
   }
-  
+
   return (
     <div className="min-h-screen w-full bg-black scroll-smooth relative">
         <div className="absolute inset-0 min-h-screen h-250 w-full bg-[url('/school.png')] bg-center bg-cover scroll-smooth"></div>
