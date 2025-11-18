@@ -15,5 +15,3 @@ export async function connect() {
     throw error; // ensures API route catches it
   }
 }
-
-export default connect()

@@ -16,7 +16,7 @@ export async function POST(req) {
 
   const user = new User({ studentNumber });
   await user.save();
-  
+
   
   return NextResponse.json({ success: true, message: "Attendance Saved!" });
 }
