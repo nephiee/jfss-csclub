@@ -16,7 +16,7 @@ export default function Home() {
     const res = await fetch("/api/attendance", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ studentNumber.trim(), code.trim() }),
+      body: JSON.stringify({ studentNumber: studentNumber.trim(), code: code.trim() }),
     });
     const data = await res.json();
     if (data.success) {
